@@ -1,9 +1,14 @@
+# Use official Java image
 FROM openjdk:17-jdk-slim
 
+# Set working directory inside container
 WORKDIR /app
 
-# Copy the JAR from the Maven build
+# Copy your built jar into the image
 COPY target/*.jar app.jar
 
-# Set the entrypoint
+# Expose application port (adjust if needed)
+EXPOSE 8080
+
+# Command to run your JAR
 ENTRYPOINT ["java", "-jar", "app.jar"]
